@@ -1,4 +1,5 @@
 
+
 import base64
 from datetime import datetime
 from pathlib import Path
@@ -7,15 +8,20 @@ import joblib
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
+from huggingface_hub import hf_hub_download
+
 
 
 # --------------------------------------------------
 # 1. PAGE SETTINGS AND FILE PATHS
 # --------------------------------------------------
 
+
 BASE_DIR = Path(__file__).parent
 
-MODEL_PATH = BASE_DIR / "used_car_price_model.pkl"
+MODEL_REPO_ID = "harathmeti-369/used-car-price-prediction"
+MODEL_FILENAME = "used_car_price_model.pkl"
+
 DATA_PATH = BASE_DIR / "cardekho_dataset.csv"
 BACKGROUND_PATH = BASE_DIR / "green_rolls_royce.jpg"
 BMW_PATH = BASE_DIR / "bmw_car.png"
@@ -46,9 +52,15 @@ st.set_page_config(
 # 2. LOAD YOUR EXISTING MODEL AND DATASET
 # --------------------------------------------------
 
+
 @st.cache_resource
 def load_model():
-    return joblib.load(MODEL_PATH)
+    model_file = hf_hub_download(
+        repo_id=MODEL_REPO_ID,
+        filename=MODEL_FILENAME,
+    )
+    return joblib.load(model_file)
+
 
 
 @st.cache_data
