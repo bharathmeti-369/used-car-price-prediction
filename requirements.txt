@@ -4,3 +4,4 @@ pandas
 matplotlib
 joblib
 scikit-learn==1.9.1
+huggingface_hub
