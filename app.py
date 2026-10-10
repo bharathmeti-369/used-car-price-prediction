@@ -135,10 +135,39 @@ st.markdown(
     background-color: #17352c;
 }
 
+    
+    /* Your existing CSS above */
 
-    h1, h2, h3 {
-        color: #f5f8fa !important;
-    }
+/* Make the main-page form labels white */
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] label,
+.stSelectbox label,
+.stNumberInput label,
+.stTextInput label,
+.stTextArea label,
+.stSlider label {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+}
+
+/* Keep input boxes light grey */
+div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div {
+    background-color: #F1F3F6 !important;
+}
+
+/* Keep the text inside input boxes dark */
+div[data-baseweb="select"] span,
+div[data-baseweb="input"] input {
+    color: #102033 !important;
+}
+
+h1, h2, h3 {
+    color: #f5f8fa !important;
+}
+
+/* Your remaining CSS below */
 
     .brand-title {
         font-size: 2.7rem;
